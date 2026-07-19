@@ -405,14 +405,36 @@
   <script>
     (function () {
       var KEY = 'khc_cookie_consent';
+      var GA_ID = 'G-2ZFMEYBSKR';
+
+      function loadAnalytics() {
+        if (window.gaLoaded) return;
+        window.gaLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+      }
+
       var banner = document.getElementById('cookie-banner');
-      if (!banner) return;
       var stored = null;
       try { stored = window.localStorage.getItem(KEY); } catch (e) {}
-      if (!stored) { banner.style.display = 'flex'; }
+
+      if (stored === 'accepted') {
+        loadAnalytics();
+      } else if (!stored && banner) {
+        banner.style.display = 'flex';
+      }
+
       function setChoice(value) {
         try { window.localStorage.setItem(KEY, value); } catch (e) {}
-        banner.style.display = 'none';
+        if (banner) banner.style.display = 'none';
+        if (value === 'accepted') loadAnalytics();
       }
       var acceptBtn = document.getElementById('cookie-accept');
       var declineBtn = document.getElementById('cookie-decline');
