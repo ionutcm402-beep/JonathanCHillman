@@ -95,6 +95,7 @@
     max-width: 760px;
     margin: 0 auto;
     padding: 120px 32px 90px;
+    text-align: center;
     opacity: 0;
     animation: rise 0.9s cubic-bezier(.2,.7,.2,1) 0.1s forwards;
   }
@@ -134,7 +135,7 @@
     font-style: italic;
     font-size: 19px;
     color: rgba(217,164,65,0.8);
-    margin: 0 0 24px;
+    margin: 0 auto 24px;
     max-width: 46ch;
   }
 
@@ -153,11 +154,11 @@
     font-size: 17px;
     line-height: 1.7;
     color: rgba(230, 205, 150, 0.88);
-    margin: 0 0 36px;
+    margin: 0 auto 36px;
     max-width: 58ch;
   }
 
-  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 8px; }
+  .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 8px; }
 
   .btn {
     display: inline-flex;
@@ -192,23 +193,27 @@
     margin: 0 0 22px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 14px;
   }
 
-  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .section-label::before,
+  .section-label::after { content: ""; flex: 1; height: 1px; background: var(--line); max-width: 120px; }
 
   .toc {
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0 32px;
+    max-width: 560px;
   }
 
   .toc li {
     display: flex;
     align-items: baseline;
+    justify-content: center;
     gap: 12px;
     font-size: 14.5px;
     color: rgba(230, 205, 150, 0.85);
@@ -256,7 +261,7 @@
     font-size: 15px;
     line-height: 1.65;
     color: rgba(230, 205, 150, 0.78);
-    margin: 0 0 22px;
+    margin: 0 auto 22px;
     max-width: 54ch;
   }
 
@@ -267,8 +272,9 @@
     margin: 0 auto;
     padding: 0 32px 60px;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 10px;
     font-family: var(--mono);
     font-size: 11px;
@@ -295,10 +301,23 @@
     <p class="subtitle">100 Recipes Built for Your E-Reader, Not Your Feed.</p>
     <p class="byline">by <a href="index.html">Jonathan C. Hillman</a></p>
 
+    <p class="section-label">0x0B — Bonus Chapter</p>
+    <div class="bonus">
+      <h2>15 more recipes, free.</h2>
+      <p>You scanned the code or typed the link — thanks for actually reading the book. These 15 didn't make the final 100, not because they're worse, but because a book has to end somewhere. Same rules as always: one screen, no fuss, no photos.</p>
+      <a class="btn" href="/bonus-chapter.pdf" download>Download the bonus chapter (PDF)</a>
+    </div>
+
+    <hr class="rule">
+
     <p class="lede">No food photography. No life story before the ingredient list. Every recipe fits on one screen, with plain ingredients and numbered steps you can actually follow with flour on your hands. Built to be read on a Kindle, not scrolled on a phone.</p>
 
     <div class="btn-row">
       <a class="btn" href="#" aria-disabled="true">Buy on Amazon Kindle</a>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn ghost" href="index.html">← Back to Main Page</a>
     </div>
 
     <hr class="rule">
@@ -316,20 +335,10 @@
       <li><span class="num">0x09</span>Desserts &amp; Sweets</li>
       <li><span class="num">0x0A</span>Drinks</li>
     </ul>
-
-    <hr class="rule" id="bonus">
-
-    <p class="section-label">0x0B — Bonus Chapter</p>
-    <div class="bonus">
-      <h2>15 more recipes, free.</h2>
-      <p>You scanned the code or typed the link — thanks for actually reading the book. These 15 didn't make the final 100, not because they're worse, but because a book has to end somewhere. Same rules as always: one screen, no fuss, no photos.</p>
-      <a class="btn" href="/bonus-chapter.pdf" download>Download the bonus chapter (PDF)</a>
-    </div>
   </main>
 
   <footer>
     <span>© 2026 Jonathan C. Hillman</span>
-    <span><a href="index.html">Back to author page</a></span>
   </footer>
 
 </body>
